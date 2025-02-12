@@ -23,10 +23,15 @@ npm run preview
 Project Structure
 
 This project follows SvelteKit conventions with the following key components:
+
 Routing & Layouts
+
 +layout.svelte: Main navigation
+
 Pages:
+
 /products: All products
+
 /products/[id]: Single product
 /cart: Shopping cart
 State Management
