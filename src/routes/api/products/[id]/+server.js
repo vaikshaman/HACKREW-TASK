@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import db from '$lib/server/db';  // ✅ Make sure this path is correct
+import { db } from '$lib/server/db';  // ✅ Make sure this path is correct
 
 export async function GET({ params }) {
     try {
