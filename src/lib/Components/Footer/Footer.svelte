@@ -8,6 +8,7 @@
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 180px;
+   
   }
 </style>

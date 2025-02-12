@@ -1,15 +1,31 @@
 <script>
   import { user } from "$lib/stores/user.js";
   import { addToCart } from '$lib/stores/cart.js';
+  import { onMount } from 'svelte';
   
   export let data;
   let currentUser = $user; // Auto-subscription
+  let addedMessage = null; // Holds the message
 
-  let defaultImage = "https://media.istockphoto.com/id/1317323736/photo/a-view-up-into-the-trees-direction-sky.jpg?s=612x612&w=0&k=20&c=i4HYO7xhao7CkGy7Zc_8XSNX_iqG0vAwNsrH1ERmw2Q=";
+  let defaultImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLn15Xevt75BmPPJ9CTAXv_ShMX8RJSOoSnsT-o4YvxcQFLhRifYPnQJ6USQ-nEAwX_0A&usqp=CAU";
 
   function getImageUrl(image) {
     return image && image.endsWith(".jpg") ? image : defaultImage;
   }
+
+  function handleAddToCart(product) {
+    addToCart(product);
+    addedMessage = `Product "${product.name}" added successfully!`;
+
+    setTimeout(() => {
+      addedMessage = null; // Clear the message after 3 seconds
+    }, 3000);
+  }
+
+  onMount(() => {
+    // Scroll to the bottom when the component mounts
+    window.scrollTo(0, document.body.scrollHeight);
+  });
 </script>
 
 <h1>Welcome to the E-Commerce Store</h1>
@@ -28,12 +44,16 @@
           <p>{product.description}</p>
           <p><strong>Price:</strong> ${product.price.toFixed(2)}</p>
         </a>
-        <button on:click={() => addToCart(product)}>Add to Cart</button>
+        <button on:click={() => handleAddToCart(product)}>Add to Cart</button>
       </div>
     {/each}
   </div>
 {:else}
   <p class="no-products">No products available.</p>
+{/if}
+
+{#if addedMessage}
+  <div class="success-message">{addedMessage}</div>
 {/if}
 
 <style>
@@ -102,5 +122,26 @@
     text-align: center;
     font-size: 18px;
     color: #888;
+  }
+
+  /* Success Message Styling */
+  .success-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 150, 136, 0.9);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    animation: fadeOut 3s forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
   }
 </style>
