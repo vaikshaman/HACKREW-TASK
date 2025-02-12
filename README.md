@@ -1,66 +1,52 @@
-sv – SvelteKit Shopping Cart
-Everything you need to build a SvelteKit project using sv.
 
-Creating a Project
-If you're seeing this, you've probably already done this step. Congrats! 🎉
+SvelteKit Shopping Cart
+A simple e-commerce project built with SvelteKit.
 
-bash
-Copy
-Edit
-# create a new project in the current directory
-npx sv create
+Quick Start
 
-# create a new project in my-app
+# Create a new project
 npx sv create my-app
-Developing
-Once you've created a project and installed dependencies with npm install (or pnpm install or yarn), start a development server:
 
-bash
-Copy
-Edit
+# Install dependencies
+cd my-app
+npm install
+
+# Start development server
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-Building
-To create a production version of your app:
-
-bash
-Copy
-Edit
+# Build for production
 npm run build
-You can preview the production build with:
 
-bash
-Copy
-Edit
+# Preview production build
 npm run preview
-To deploy your app, you may need to install an adapter for your target environment.
 
-My Approach
-I structured this project using SvelteKit with the following principles:
+Project Structure
 
-1. Routing & Layouts
-Used +layout.svelte for navigation and created multiple pages (+page.svelte).
+This project follows SvelteKit conventions with the following key components:
+Routing & Layouts
++layout.svelte: Main navigation
 Pages:
-/products → Shows all products.
-/products/[id] → Displays a single product.
-/cart → Shopping cart page.
-2. State Management
-Used Svelte stores (writable) for managing the cart state.
-This makes sure the cart updates instantly across pages.
-3. API Handling
-Fetched products from a database using +server.js.
-Handled errors properly for a smooth experience.
-4. Form Actions
-Implemented product addition via +page.server.js.
-Works even without JavaScript.
-5. Error Handling
-Used +error.svelte for showing clean error messages.
-6. Styling & Components
-Created reusable components like:
-ProductCard.svelte → Renders product info.
-CartItem.svelte → Represents an item in the cart.
-7. Simple Login
-Implemented a basic client-side login where users enter their name.
-This persists using local storage.
+/products: All products
+/products/[id]: Single product
+/cart: Shopping cart
+State Management
+Svelte stores for cart state
+API Handling
++server.js for fetching products
+Form Actions
++page.server.js for adding products
+Error Handling
++error.svelte for error messages
+Components
+ProductCard.svelte: Product info
+CartItem.svelte: Cart item
+Authentication
+Basic client-side login with local storage
+Approach
+Used SvelteKit's file-based routing
+Implemented reactive cart using Svelte stores
+Fetched products from a database
+Created reusable components
+Added basic error handling
+Implemented simple client-side authentication
+For more details on SvelteKit, check out the official documentation.
