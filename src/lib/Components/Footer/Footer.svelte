@@ -8,7 +8,7 @@
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: 170px;
+    margin-top: 150px;
    
   }
 </style>

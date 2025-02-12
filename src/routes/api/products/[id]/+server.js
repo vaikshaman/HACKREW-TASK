@@ -6,10 +6,10 @@ export async function GET({ params }) {
     const productId = Number(params.id);
 
     try {
-        // Use the method that works in your add product functionality
+
         const product = await db.select().from(products).where(eq(products.id, productId)).get();
 
-       // console.log('Requested Product:', product);
+    //    console.log('Requested Product:', product);
 
         if (!product) {
             return new Response(JSON.stringify({ error: 'Product not found' }), { status: 404 });
